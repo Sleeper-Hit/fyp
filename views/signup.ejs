@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+  <style>
+				input[type=text], select {
+				    width: 30%;
+				    padding: 12px 20px;
+				    margin: 8px 0;
+				    display: inline-block;
+				    border: 1px solid #ccc;
+				    border-radius: 4px;
+				    box-sizing: border-box;
+				}
+				input[type=submit] {
+				    width: 30%;
+				    background-color: #4CAF50;
+				    color: white;
+				    padding: 14px 20px;
+				    margin: 8px 0;
+				    border: none;
+				    border-radius: 4px;
+				    cursor: pointer;
+				}
+
+				input[type=submit]:hover {
+				    background-color: #45a049;
+				}
+	</style>
+</head>
+<body style="text-align: center">
+  <h2>Sign up</h2><br />
+
+    <form id="formoid" action="/users/signup" title="" method="post">
+        <div>
+            <label class="title">Full Name</label><br />
+            <input type="text" id="fname" name="name" required>
+        </div>
+		      <div>
+            <label class="title">Email</label><br />
+            <input type="text" id="email" name="email" required>
+        </div>
+		      <div>
+            <label class="title">Password</label><br />
+            <input type="text" id="password" type="password" name="password" required>
+        </div>
+        <div>
+            <label class="title">Role</label><br />
+            <input type="text" id="role" name="role" required>
+        </div>
+        <div>
+            <input type="submit" id="submitButton"  name="submitButton" value="Submit">
+        </div>
+	</form>
+
+  <p><a href="/">Log in</a></p>
+
+</body>
+</html>
