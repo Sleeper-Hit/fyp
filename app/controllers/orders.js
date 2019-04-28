@@ -56,7 +56,7 @@ exports.listRooms = function(req, res) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
-        } else return res.send(info);
+        } else return res.send({articles: info, success: true});
     });
 };
 
