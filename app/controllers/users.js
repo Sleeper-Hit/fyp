@@ -81,10 +81,10 @@ exports.login = function(req, res) {
             return res.send({
             		user: {
             			id: user._id,
-						username: user.username,
-						firstname: user.firstname,
-						lastname: user.lastname,
-						email: user.email,
+      						username: user.username,
+      						firstname: user.firstname,
+      						lastname: user.lastname,
+      						email: user.email,
             			token: token
             		},
                 success: true
