@@ -24,7 +24,7 @@ module.exports = function() {
     let strategy = new JWTStrategy(jwtOptions, function(jwt_payload, done) {
         User.findOne({
             _id: jwt_payload._id
-        }, '-salt -password -__v -provider', function(err, user) {
+            }, '-salt -password -__v -provider', function(err, user) {
             if (err) {
                 return done(err, false);
             }

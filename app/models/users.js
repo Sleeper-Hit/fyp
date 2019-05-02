@@ -7,13 +7,13 @@ let UserSchema = new Schema({
       type: String,
       required: true
     },
-    role: {
-      type: String,
-      default: "user"
-    },
     email: {
-      type: String,
-      required: true
+        type: String,
+        required: true,
+        lowercase: true,
+        unique: true,
+        format: [/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        'Please provide a valid email address!']
     },
     password: {
       type: String,
@@ -35,6 +35,7 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods.authenticate = function(password) {
+    console.log("Condition: " + (this.password === this.hashPassword(password)));
     return this.password === this.hashPassword(password);
 };
 
@@ -42,9 +43,16 @@ UserSchema.methods.hashPassword = function(password) {
     return crypto.pbkdf2Sync(password, this.salt, 10000, 64, 'sha512').toString('base64');
 };
 
-UserSchema.set('toJSON', {
-    getters: true,
-    virtuals: true
-});
+UserSchema.statics.checkEmail = function(email, next) {
+    this.findOne({
+        email: email
+    }, function(err, user) {
+        if(err) {
+            return 'An error occurred, Please Try Again';
+        } else if(user) {
+            return false;
+        } else return true;
+    });
+};
 
 mongoose.model('User', UserSchema);

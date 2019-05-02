@@ -18,7 +18,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body style="text-align: center">
+<body>
 	<h2>Current Rooms Available</h2>
 
 	<p><a href="/rooms/create" class="placeOrder">Post A Room</a></p>
@@ -27,13 +27,13 @@
 	  <% orders.forEach((item) => { %>
 	  <% var link = "/rooms/" + item._id; %>
 	  <div class="card">
-		<div class="container">
-		  <h4>Title: <a href=<%= link %> ><%= item.Title %></a></h4>
-		  <p><b>Options:</b> <%= item.Options %></p>
-      <p><b>Address:</b> <%= item.Address %></p>
-		  <p><b>Price:</b> <%= item.Price %></p>
-      <button class="delete"><a href=<%= link + "/delete" %>>Delete</a></button><br /><br /><br />
-		</div>
+  		<div class="container" style="text-align: center">
+  		  <h4>Title: <a href=<%= link %> ><%= item.Title %></a></h4>
+  		  <p><b>Options:</b> <%= item.Options %></p>
+        <p><b>Address:</b> <%= item.Address %></p>
+  		  <p><b>Price:</b> <%= item.Price %></p>
+        <button class="delete"><a href=<%= link + "/delete" %>>Delete</a></button><br /><br /><br />
+  		</div>
 	  </div>
 	  <% }) %>
 	<% } %>

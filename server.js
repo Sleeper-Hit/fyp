@@ -6,9 +6,11 @@
 
 const express      =   require('./config/express');
 const mongoose     =   require('./config/mongoose');
+const passport     =   require('./config/passport');
 
 const db           =   mongoose();
 const app          =   express();
+const auth         =   passport();
 
 app.set('port', process.env.PORT || 3400);
 

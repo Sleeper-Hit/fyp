@@ -40,6 +40,15 @@ function generateJWT(user) {
     }, '123bcvd');
 }
 
+exports.CheckLogin = function(req, res, next) {
+    if(!req.isAuthenticated()) {
+        return res.status(401).send({
+            message: 'User not logged in'
+        });
+    }
+    next();
+};
+
 exports.create = function(req, res) {
       let user = new User(req.body);
 
@@ -48,7 +57,7 @@ exports.create = function(req, res) {
               console.log(err);
               return res.status(400).send({message: getErrorMessage(err)});
           } else {
-              return res.redirect('/rooms');
+              return res.redirect('/');
           }
       });
 };
@@ -77,24 +86,15 @@ exports.login = function(req, res) {
             return res.send({message: "The username or email address you've entered doesn't match any account"});
         }
         else if (user.authenticate(password)) {
-            let token = generateJWT(user);
-            return res.send({
-            		user: {
-            			id: user._id,
-      						username: user.username,
-      						firstname: user.firstname,
-      						lastname: user.lastname,
-      						email: user.email,
-            			token: token
-            		},
-                success: true
-            });
+            return res.redirect("/rooms");
         } else return res.status(401).send({message: "Incorrect username and password combination!"});
     });
 };
 
 exports.renderLogin = function(req, res) {
-    return res.render("signin");
+    return res.render('signin', {
+        message: req.flash('error') || req.flash('info')
+    });
 };
 
 exports.renderSignup = function(req, res) {

@@ -18,7 +18,10 @@ var RoomSchema = new Schema({
       type: String,
       required: true
     },
-    Booked: Boolean,
+    Booked: {
+      type: Boolean,
+      default: false
+    },
     PostedBy: {
       type: String,
       required: true

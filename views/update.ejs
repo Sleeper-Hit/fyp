@@ -29,15 +29,15 @@
   </head>
   <body style="text-align: center">
 
-<h2>Meal Details</h2><br />
+<h2>Room Details</h2><br />
 
 <% var link = "/rooms/" + data._id; %>
 
 <form method="PUT" action=<%= link %> id="my_form">
-    Title: <br><input type="text" id="name" name="name" value=<%= data.name %> required ><br /><br />
-    Options: <br><input type="text" id="items" name="items" value=<%= data.items %> required><br /><br />
-    Address: <br><input type="text" id="quantity" name="quantity" value=<%= data.quantity %> required><br /><br />
-    Price: <br><input type="text" id="price" name="price" value=<%= data.price %> required><br /><br />
+    Title: <br><input type="text" id="name" name="Title" value=<%= data.Title %>><br /><br />
+    Options: <br><input type="text" id="items" name="Options" value=<%= data.Options %> required><br /><br />
+    Address: <br><input type="text" id="quantity" name="Address" value=<%= data.Address %> required><br /><br />
+    Price: <br><input type="text" id="price" name="Price" value=<%= data.Price %> required><br /><br />
     <input type="submit">
 </form>
 

@@ -25,8 +25,8 @@ let getErrorMessage = function(err) {
 };
 
 exports.create = function(req, res) {
-	let order = new Orders(req.body);
-	order.postedBy = req.user;
+	  let order = new Orders(req.body);
+	  order.PostedBy = req.user._id;
 
     order.save(function(err, info) {
         if(err) {
@@ -39,7 +39,7 @@ exports.create = function(req, res) {
 };
 
 exports.list = function(req, res) {
-    Orders.find({}).exec(function(err, info) {
+    Orders.find({PostedBy: escape(req.user.id)}).exec(function(err, info) {
         if(err) {
             console.log(err);
             return res.status(400).send({
@@ -50,7 +50,7 @@ exports.list = function(req, res) {
 };
 
 exports.listRooms = function(req, res) {
-    Orders.find({}).exec(function(err, info) {
+    Orders.find({Booked: false}).exec(function(err, info) {
         if(err) {
             console.log(err);
             return res.status(400).send({
@@ -94,6 +94,37 @@ exports.update = function(req, res) {
     order.Price = req.body.Price;
 
     order.save(function(err) {
+        if(err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        } else {
+					res.send(order);
+				}
+    });
+};
+
+exports.bookRoom = function(req, res) {
+    var order = req.order;
+
+    order.Booked = true;
+
+		order.save(function(err) {
+        if(err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        } else {
+					res.send(order);
+				}
+    });
+};
+
+exports.unbookRoom = function(req, res) {
+    var order = req.order;
+    order.Booked = false;
+
+		order.save(function(err) {
         if(err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
