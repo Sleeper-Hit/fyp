@@ -35,7 +35,6 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods.authenticate = function(password) {
-    console.log("Condition: " + (this.password === this.hashPassword(password)));
     return this.password === this.hashPassword(password);
 };
 
