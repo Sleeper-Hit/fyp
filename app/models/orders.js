@@ -22,6 +22,10 @@ var RoomSchema = new Schema({
       type: Boolean,
       default: false
     },
+    BookedBy: {
+      type: Schema.ObjectId,
+      ref: 'User'
+    },
     PostedBy: {
       type: String,
       required: true

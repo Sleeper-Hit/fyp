@@ -108,6 +108,7 @@ exports.bookRoom = function(req, res) {
     var order = req.order;
 
     order.Booked = true;
+		order.BookedBy = req.user;
 
 		order.save(function(err) {
         if(err) {
@@ -115,7 +116,7 @@ exports.bookRoom = function(req, res) {
                 message: getErrorMessage(err)
             });
         } else {
-					res.send(order);
+					res.send({order: order, success: true});
 				}
     });
 };
@@ -123,6 +124,7 @@ exports.bookRoom = function(req, res) {
 exports.unbookRoom = function(req, res) {
     var order = req.order;
     order.Booked = false;
+		order.BookedBy = null;
 
 		order.save(function(err) {
         if(err) {
@@ -130,7 +132,7 @@ exports.unbookRoom = function(req, res) {
                 message: getErrorMessage(err)
             });
         } else {
-					res.send(order);
+					res.send({order: order, success: true});
 				}
     });
 };

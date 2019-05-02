@@ -10,6 +10,9 @@ module.exports = function(app) {
 
     app.get('/rooms/all', passport.authenticate('jwt', {session: false}), orders.listRooms)
 
+    app.post('/rooms/:roomsId/book', passport.authenticate('jwt', {session: false}), orders.bookRoom)
+    app.post('/rooms/:roomsId/unbook', passport.authenticate('jwt', {session: false}), orders.unbookRoom)
+
     app.route('/rooms/:roomsId')
       .get(users.CheckLogin, orders.read)
       .put(users.CheckLogin, orders.update)
