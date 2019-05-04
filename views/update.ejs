@@ -35,8 +35,8 @@
 
 <form method="PUT" action=<%= link %> id="my_form">
     Title: <br><input type="text" id="name" name="Title" value=<%= data.Title %>><br /><br />
-    Options: <br><input type="text" id="items" name="Options" value=<%= data.Options %> required><br /><br />
-    Address: <br><input type="text" id="quantity" name="Address" value=<%= data.Address %> required><br /><br />
+    Options: <br><textarea rows="4" cols="50" id="items" name="Options" value=<%= data.Options %> required></textarea><br /><br />
+    Address: <br><textarea rows="4" cols="50" id="quantity" name="Address" value=<%= data.Address %> required></textarea><br /><br />
     Price: <br><input type="text" id="price" name="Price" value=<%= data.Price %> required><br /><br />
     <input type="submit">
 </form>
