@@ -18,7 +18,7 @@ module.exports = function(app) {
       .put(users.CheckLogin, orders.update)
       .delete(users.CheckLogin, orders.delete);
 
-    app.get('/rooms/:roomsId/delete', passport.authenticate('jwt', {session: false}),  orders.renderDelete)
+    app.get('/rooms/:roomsId/delete', users.CheckLogin, orders.renderDelete)
 
     app.param('roomsId', orders.orderByID);
 };
