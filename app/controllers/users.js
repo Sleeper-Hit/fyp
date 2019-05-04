@@ -86,7 +86,12 @@ exports.login = function(req, res) {
             return res.send({message: "The username or email address you've entered doesn't match any account"});
         }
         else if (user.authenticate(password)) {
-            return res.send({user: user, success: true});
+            let token = generateJWT(user);
+            return res.send({user: {
+              id: user._id,
+              name: user.name,
+              token: token
+            }, success: true});
         } else return res.status(401).send({message: "Incorrect username and password combination!"});
     });
 };
