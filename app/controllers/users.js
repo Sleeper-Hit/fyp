@@ -77,7 +77,7 @@ exports.login = function(req, res) {
     let email     = req.body.email;
     let password  = req.body.password;
 
-    User.findOne({"email": email}, function(err, user){
+    User.findOne({"email": email}, '-salt -password -__v -provider', function(err, user){
         if (err) {
             console.log(err);
             return res.send({message: getErrorMessage(err)});
