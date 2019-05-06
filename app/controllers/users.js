@@ -57,7 +57,7 @@ exports.create = function(req, res) {
               console.log(err);
               return res.status(400).send({message: getErrorMessage(err)});
           } else {
-              return res.redirect('/');
+              return res.redirect(200, '/');
           }
       });
 };
