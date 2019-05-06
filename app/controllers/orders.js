@@ -50,7 +50,7 @@ exports.list = function(req, res) {
 };
 
 exports.listRooms = function(req, res) {
-    Orders.find({Booked: false}).exec(function(err, info) {
+    Orders.find({ PostedBy: { $ne: escape(req.user.id) } }).exec(function(err, info) {
         if(err) {
             console.log(err);
             return res.status(400).send({
