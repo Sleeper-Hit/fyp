@@ -18,6 +18,8 @@ module.exports = function(app) {
       .put(users.CheckLogin, orders.update)
       .delete(users.CheckLogin, orders.delete);
 
+    app.get('/list_booked', passport.authenticate('jwt', {session: false}), orders.listBookedRooms);
+
     app.get('/rooms/:roomsId/delete', users.CheckLogin, orders.renderDelete)
 
     app.param('roomsId', orders.orderByID);

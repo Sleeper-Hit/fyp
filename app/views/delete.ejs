@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delete Room</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class = "text-center">
+		<div class = "form-container">
+      	<h2>Rooms Created</h2>
+
+        <% var link = "/rooms/" + data._id; %>
+
+        <form method="DELETE" action=<%= link %> id="my_form">
+            Title: <b><%= data.Title %></b><br /><br />
+            Options: <b><%= data.Options %></b><br /><br />
+            Address: <b><%= data.Address %></b><br /><br />
+            Price: <b><%= data.Price %></b><br /><br />
+            <input type="submit">
+        </form>
+
+        <h2><a href="/rooms">View Rooms List</a></h2>
+
+        <script type="text/javascript">
+          $("#my_form").submit(function(event){
+          	event.preventDefault(); //prevent default action
+          	var post_url = $(this).attr("action"); //get form action url
+          	var request_method = $(this).attr("method"); //get form GET/POST method
+          	var form_data = $(this).serialize(); //Encode form elements for submission
+
+          	$.ajax({
+          		url : post_url,
+          		type: request_method,
+          		data : form_data
+          	}).done(function(response){ //
+          		$("#server-results").html(response);
+              console.log(response);
+              alert("Delete Successful");
+          	});
+          });
+        </script>
+     </div>
+   </div>
+</body>
+</html>

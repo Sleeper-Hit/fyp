@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'League Spartan';
+    src: url('fonts/LeagueSpartan-Bold.otf');
+}
+
+.form-container {
+    width: 100%;
+    margin-top: 3em;
+}
+
+.form-signin {
+    width: 20em;
+    height: 17em;
+    background-color: #fff;
+    max-width: 330px;
+    padding: 20px;
+    margin: auto;
+}
+
+.signup-link {
+    width: 20em;
+    height: 3em;
+    background-color: #F0F0F0;
+    max-width: 330px;
+    padding: 7px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.input-default {
+    font-size: 13px;
+    padding: 8px;
+    background-color: #fff;
+}
+
+.custom-card-style {
+    width: 36rem;
+    margin-left: 500px;
+    padding-top: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.margin-bottom {
+    padding-bottom:10px !important;
+}
+
+.input-margin-top {
+    margin-top: 10px !important;
+}
+
+.margin-bottom-password {
+    margin-bottom:12px !important;
+}
+
+.custom-button {
+    font-size: 13px;
+    padding: 6px;
+    width: 12em;
+    font-weight: bold;
+}
+
+.custom-button:hover {
+    border: 3px solid #8b9dc3 !important;
+    color: #8b9dc3 !important;
+    background-color: #fff !important;
+    text-decoration: none;
+}
+
+.password-reset-text {
+    font-size: 10px;
+    margin-top: 0.8em;
+    font-family: 'League Spartan';
+    font-weight: bold;
+    color: #8b9dc3 !important;
+}
+
+.password-reset-text:hover {
+    color: #3b5998 !important;
+    text-decoration: none;
+}
+
+.login-reset-text {
+    font-size: 12px;
+    margin-top: 0.8em;
+    font-family: 'League Spartan';
+    font-weight: bold;
+    color: #8b9dc3 !important;
+}
+
+.login-text {
+    font-size: 10px;
+    margin-top: 0.8em;
+    background-color: #8b9dc3 !important;
+    border-radius: 90px;
+    padding: 5px 13px;
+    font-family: 'League Spartan';
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.signup-text {
+    font-size: 13px;
+}

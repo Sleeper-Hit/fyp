@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List Rooms</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class = "text-center">
+		<div class = "form-container">
+      	<h2>Rooms Created</h2>
+
+      	<p><a href="/rooms/create" class="btn btn-primary custom-button" style="margin-top: 20px;">Post A Room</a></p>
+
+      	<% if (orders && orders.length) { %>
+      	  <% orders.forEach((item) => { %>
+      	  <% var link = "/rooms/" + item._id; %>
+      	  <div class="card text-center custom-card-style">
+            <div class="card-body">
+        		  <b><h3>Title: <a href=<%= link %> ><%= item.Title %></a></h3></b>
+        		  <p><b>Options:</b> <%= item.Options %></p>
+              <p><b>Address:</b> <%= item.Address %></p>
+        		  <p><b>Price:</b> <%= item.Price %></p>
+      		    <p><b>Room Booked:</b> <%= item.Booked %></p>
+              <a class="btn btn-primary" href=<%= link + "/delete" %>>Delete</a><br /><br /><br />
+            </div>
+          </div>
+      	  <% }) %>
+      	<% } %>
+    </div>
+  </div>
+</body>
+</html>

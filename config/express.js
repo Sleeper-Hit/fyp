@@ -16,15 +16,18 @@ module.exports = function() {
     }));
     app.use(bodyParser.json());
 
+    app.use(express.static('./public'));
+
     app.use(session({
        resave: true,
        saveUninitialized: true,
        secret: 'supersecret'
-   }));
-   
+    }));
+
     app.use(methodOverride());
     app.use(flash());
 
+    app.set('views', './app/views');
   	app.set('view engine', 'ejs');
   	require('./strategies/local-jwt.js')();
     app.use(passport.initialize());

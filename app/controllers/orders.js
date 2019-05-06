@@ -60,6 +60,17 @@ exports.listRooms = function(req, res) {
     });
 };
 
+exports.listBookedRooms = function(req, res) {
+    Orders.find({BookedBy: escape(req.user.id)}).exec(function(err, info) {
+        if(err) {
+            console.log(err);
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        } else return res.send({articles: info, success: true});
+    });
+};
+
 exports.renderCreate = function (req, res) {
    res.render('create');
 };
@@ -108,7 +119,7 @@ exports.bookRoom = function(req, res) {
     var order = req.order;
 
     order.Booked = true;
-		order.BookedBy = req.user;
+		order.BookedBy = escape(req.user.id);
 
 		order.save(function(err) {
         if(err) {
@@ -124,7 +135,7 @@ exports.bookRoom = function(req, res) {
 exports.unbookRoom = function(req, res) {
     var order = req.order;
     order.Booked = false;
-		order.BookedBy = null;
+		order.BookedBy = "";
 
 		order.save(function(err) {
         if(err) {

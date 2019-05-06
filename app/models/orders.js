@@ -23,8 +23,8 @@ var RoomSchema = new Schema({
       default: false
     },
     BookedBy: {
-      type: Schema.ObjectId,
-      ref: 'User'
+      type: String,
+      default: ""
     },
     PostedBy: {
       type: String,

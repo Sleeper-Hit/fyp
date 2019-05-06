@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Room</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+          input[type=text], select, textarea {
+              width: 30%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+          }
+    </style>
+  </head>
+  <body style="text-align: center">
+
+<h2>Room Details</h2><br />
+
+<% var link = "/rooms/" + data._id; %>
+
+<form method="PUT" action=<%= link %> id="my_form">
+    <b>Title</b> <br><input type="text" id="name" name="Title" value=<%= data.Title %>><br /><br />
+    <b>Options</b> <br><textarea rows="4" cols="50" name="Options" required><%= data.Options %></textarea><br /><br />
+    <b>Address</b> <br><textarea rows="4" cols="50" name="Address" required><%= data.Address %></textarea><br /><br />
+    <b>Price</b> <br><input type="text" name="Price" value=<%= data.Price %> required><br /><br />
+    <input class="btn btn-primary custom-button" type="submit">
+</form>
+
+<h2><a href="/rooms">View Available Rooms</a></h2>
+
+<script type="text/javascript">
+  $("#my_form").submit(function(event){
+  	event.preventDefault(); //prevent default action
+  	var post_url = $(this).attr("action"); //get form action url
+  	var request_method = $(this).attr("method"); //get form GET/POST method
+  	var form_data = $(this).serialize(); //Encode form elements for submission
+
+  	$.ajax({
+  		url : post_url,
+  		type: request_method,
+  		data : form_data
+  	}).done(function(response){ //
+  		$("#server-results").html(response);
+      console.log(response);
+      alert("Update Successful");
+  	});
+  });
+</script>
+
+</body></html>
