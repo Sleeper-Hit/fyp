@@ -14,4 +14,6 @@ module.exports = function(app) {
 
     app.route('/users/signup').get(user.renderSignup)
         .post(user.create);
+
+    app.get('/signout', user.logout);
 }

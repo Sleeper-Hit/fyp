@@ -105,3 +105,7 @@ exports.renderLogin = function(req, res) {
 exports.renderSignup = function(req, res) {
     return res.render("signup");
 };
+
+exports.logout = function(req, res) {
+    req.logout();
+};
