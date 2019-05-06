@@ -28,7 +28,7 @@
 <% var link = "/rooms/" + data._id; %>
 
 <form method="PUT" action=<%= link %> id="my_form">
-    <b>Title</b> <br><input type="text" id="name" name="Title" value=<%= data.Title %>><br /><br />
+    <b>Title</b> <br><input type="text" id="name" name="Title" value=<%= data.Title %> required><br /><br />
     <b>Options</b> <br><textarea rows="4" cols="50" name="Options" required><%= data.Options %></textarea><br /><br />
     <b>Address</b> <br><textarea rows="4" cols="50" name="Address" required><%= data.Address %></textarea><br /><br />
     <b>Price</b> <br><input type="text" name="Price" value=<%= data.Price %> required><br /><br />
